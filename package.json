@@ -1,0 +1,27 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node_modules/.bin/nuxt",
+    "build": "node_modules/.bin/nuxt build",
+    "start": "node_modules/.bin/nuxt start",
+    "generate": "node_modules/.bin/nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/proxy": "^2.1.0",
+    "axios": "0.21.1",
+    "core-js": "^3.15.1",
+    "dotenv": "^10.0.0",
+    "nuxt": "^2.15.7",
+    "vuetify": "^2.5.5",
+    "vuex-module-decorators": "^1.0.1"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.15.8",
+    "@nuxt/typescript-build": "^2.1.0",
+    "@nuxtjs/vuetify": "^1.12.1"
+  }
+}
