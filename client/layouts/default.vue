@@ -52,7 +52,12 @@ export default {
         {
           icon: 'mdi-home',
           title: 'Home',
-          to: '/home',
+          to: '/',
+        },
+        {
+          icon: 'mdi-desktop-classic',
+          title: 'Compile',
+          to: '/compile',
         },
       ],
       miniVariant: false,

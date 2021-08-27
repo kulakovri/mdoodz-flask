@@ -24,6 +24,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {src: '~/plugins/filters.ts', ssr: true},
     {src: '~/plugins/router.ts', ssr: true},
     {src: '~/plugins/logger.ts', ssr: false},
     {src: '~/plugins/axios-accessor.ts', ssr: true},

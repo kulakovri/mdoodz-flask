@@ -7,8 +7,12 @@ name = "pypi"
 flask = "*"
 python-dotenv = "*"
 flask-cors = "*"
+h5py = "*"
+numpy = "*"
+matplotlib = "*"
+marshmallow = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
+python_version = "3.7"
