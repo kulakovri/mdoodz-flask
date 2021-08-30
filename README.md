@@ -1,5 +1,6 @@
 # MDOODZ6.0 with the web interface
 ## Overview
+This project is the extention of the Thibault Duretz C code https://github.com/tduretz/MDOODZ6.0/
 ### Consists of 3 systems
 - Front-end (Nuxt.js)
 - Server (Python flask) 
