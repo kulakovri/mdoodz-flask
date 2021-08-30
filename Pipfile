@@ -10,6 +10,7 @@ flask-cors = "*"
 h5py = "*"
 numpy = "*"
 matplotlib = "*"
+marshmallow-dataclass = "*"
 marshmallow = "*"
 
 [dev-packages]
