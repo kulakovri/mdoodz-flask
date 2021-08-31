@@ -4,7 +4,8 @@
       <v-card class="mb-4">
         <div class="d-flex justify-space-between align-center">
           <v-card-title class="py-1 text-subtitle-1 font-weight-medium"
-          >Compilation Options</v-card-title
+          >Compilation Options
+          </v-card-title
           >
         </div>
         <v-divider></v-divider>
@@ -26,8 +27,9 @@
           ></PickListField>
         </v-card-text>
       </v-card>
+      <v-btn @click="compile">Compile</v-btn>
+      <v-btn @click="clean">Clean</v-btn>
     </v-col>
-    <v-btn @click="compile">Compile</v-btn>
   </v-row>
 </template>
 
@@ -43,10 +45,10 @@ export default {
   components: {PickListField},
   data() {
     return {
-      pickedSimulationName: '',
-      opt: '',
+      pickedSimulationName: null,
+      opt: null,
       optValues: ['yes', 'no'],
-      mkl: '',
+      mkl: null,
       mklValues: ['yes', 'no'],
       localValue: this.value,
     };
@@ -57,16 +59,20 @@ export default {
     }
   },
   methods: {
-    async test() {
-      console.log(this.pickedSimulationName);
-    },
     async compile() {
       try {
-        await axios.get('mdoodz/compile', {
+        await axios.post('api/compile', {
           opt: this.opt,
-          mkl: this.pickedSimulationName,
-          modelName: this.pickedSimulationName,
+          mkl: this.mkl,
+          simulation_name: this.pickedSimulationName,
         });
+      } catch (ex) {
+        userStore.setError(ex);
+      }
+    },
+    async clean() {
+      try {
+        await axios.post('api/clean');
       } catch (ex) {
         userStore.setError(ex);
       }
