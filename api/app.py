@@ -1,8 +1,10 @@
-from flask import Flask
+from flask import Flask, jsonify, json
 from flask_cors import CORS
-from compilation import compilation_controller
-from visualisation import visualisation_controller
-from simulation import simulation_controller
+from api.compilation import compilation_controller
+from api.visualisation import visualisation_controller
+from api.simulation import simulation_controller
+from api.exceptions import UserException
+from marshmallow.exceptions import ValidationError
 
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -20,3 +22,15 @@ app.register_blueprint(compilation_controller.cleaner_blueprint)
 app.register_blueprint(visualisation_controller.blueprint)
 app.register_blueprint(simulation_controller.blueprint)
 
+
+@app.errorhandler(UserException)
+def handle_invalid_usage(error):
+  response = jsonify(error.to_dict())
+  response.status_code = error.status_code
+  return response
+
+
+@app.errorhandler(ValidationError)
+def handle_invalid_usage(error):
+  rv = dict({'message': json.dumps(error.messages)})
+  return rv, 422

@@ -12,6 +12,7 @@ numpy = "*"
 matplotlib = "*"
 marshmallow-dataclass = "*"
 marshmallow = "*"
+pytest-flask = "*"
 
 [dev-packages]
 

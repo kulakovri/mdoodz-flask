@@ -4,6 +4,6 @@ from typing import Optional
 
 @dataclass
 class CompilingDto:
-  modelName: str
+  simulation_name: str
   mkl: Optional[str]
   opt: Optional[str]
