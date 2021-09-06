@@ -24,13 +24,13 @@ app.register_blueprint(simulation_controller.blueprint)
 
 
 @app.errorhandler(UserException)
-def handle_invalid_usage(error):
+def register_user_exception(error):
   response = jsonify(error.to_dict())
   response.status_code = error.status_code
   return response
 
 
 @app.errorhandler(ValidationError)
-def handle_invalid_usage(error):
-  rv = dict({'message': json.dumps(error.messages)})
-  return rv, 422
+def register_validation_error(error):
+  response = dict({'message': json.dumps(error.messages)})
+  return response, 422
