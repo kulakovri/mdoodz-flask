@@ -4,7 +4,7 @@
       <v-card class="mb-4">
         <div class="d-flex justify-space-between align-center">
           <v-card-title class="py-1 text-subtitle-1 font-weight-medium"
-          >Compilation Options
+          >Simulation Options
           </v-card-title
           >
         </div>
@@ -15,20 +15,9 @@
             label="Simulation Name"
             :picklist-items="simulationNames"
           ></PickListField>
-          <PickListField
-            v-model="opt"
-            label="Optimisation"
-            :picklist-items="optValues"
-          ></PickListField>
-          <PickListField
-            v-model="mkl"
-            label="MKL"
-            :picklist-items="mklValues"
-          ></PickListField>
         </v-card-text>
       </v-card>
-      <v-btn @click="compile">Compile</v-btn>
-      <v-btn @click="clean">Clean</v-btn>
+      <v-btn @click="runSimulation">Run Simulation</v-btn>
     </v-col>
   </v-row>
 </template>
@@ -46,11 +35,6 @@ export default {
   data() {
     return {
       pickedSimulationName: SimulationName.PlateauPierre,
-      opt: 'yes',
-      optValues: ['yes', 'no'],
-      mkl: 'yes',
-      mklValues: ['yes', 'no'],
-      localValue: this.value,
     };
   },
   computed: {
@@ -59,20 +43,13 @@ export default {
     }
   },
   methods: {
-    async compile() {
+    async runSimulation() {
       try {
-        await axios.post('api/compile', {
+        await axios.post('api/run-simulation', {
           opt: this.opt,
           mkl: this.mkl,
           simulation_name: this.pickedSimulationName,
         });
-      } catch (ex) {
-        userStore.setError(ex);
-      }
-    },
-    async clean() {
-      try {
-        await axios.post('api/clean');
       } catch (ex) {
         userStore.setError(ex);
       }

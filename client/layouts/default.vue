@@ -59,6 +59,16 @@ export default {
           title: 'Compile',
           to: '/compile',
         },
+        {
+          icon: 'mdi-ray-start-arrow',
+          title: 'Start',
+          to: '/start',
+        },
+        {
+          icon: 'mdi-tooltip-image-outline',
+          title: 'Visualise',
+          to: '/visualise',
+        },
       ],
       miniVariant: false,
     };
