@@ -1,5 +1,6 @@
 from marshmallow_dataclass import dataclass
 
+
 @dataclass
 class SimulationDto:
-  modelName: str
+  simulation_name: str

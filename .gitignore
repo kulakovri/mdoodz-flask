@@ -90,3 +90,8 @@ sw.*
 *.swp
 
 venv
+
+*.o
+*.png
+*.dat
+*.h5

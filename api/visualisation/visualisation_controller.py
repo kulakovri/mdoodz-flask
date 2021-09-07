@@ -3,7 +3,8 @@ from .visualisation_service import run_visualisation
 
 blueprint = Blueprint('visualisation', __name__)
 
-@blueprint.post('/api/visualise')
+@blueprint.get('/api/visualise')
 def visualise():
+  print('visualising')
   run_visualisation()
   return ''
