@@ -50,13 +50,18 @@ export default {
       optValues: ['yes', 'no'],
       mkl: 'yes',
       mklValues: ['yes', 'no'],
-      localValue: this.value,
     };
   },
   computed: {
     simulationNames() {
       return Object.values(SimulationName);
-    }
+    },
+  },
+  async beforeMount() {
+    await simulationStore.getCache();
+    this.pickedSimulationName = simulationStore.compiling?.simulation_name || this.pickedSimulationName;
+    this.opt = simulationStore.compiling?.opt || this.opt;
+    this.mkl = simulationStore.compiling?.mkl || this.mkl;
   },
   methods: {
     async compile() {

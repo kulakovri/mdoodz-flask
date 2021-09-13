@@ -14,20 +14,20 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title v-text="item.title"/>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app flat>
-      <v-toolbar-title class="text-capitalize" v-text="title" />
-      <v-spacer />
+      <v-toolbar-title class="text-capitalize" v-text="title"/>
+      <v-spacer/>
       <v-menu bottom :offset-y="true">
       </v-menu>
     </v-app-bar>
     <v-main>
       <v-container>
-        <nuxt />
+        <nuxt/>
       </v-container>
     </v-main>
   </v-app>
@@ -36,7 +36,7 @@
 <script>
 import ErrorAlert from '~/components/common/alerts/ErrorAlert';
 import navigation from '~/plugins/mixins/navigation';
-import { userStore } from '~/store';
+import {userStore} from '~/store';
 
 export default {
   components: {
