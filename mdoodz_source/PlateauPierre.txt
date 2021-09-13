@@ -4,9 +4,9 @@ irestart = 0
 
 /**** OUTPUT FILES ****/
 writer = 1
-writer_step = 10
+writer_step = 1
 writer_markers = 0
-writer_debug   = 0 
+writer_debug   = 0
 
 /**** INPUT FILE FOR PARTICLES ****/
 input_file = setup_r501x501_fsp40.bin
@@ -16,7 +16,7 @@ eta = 1e+20
 L   = 30e4
 V   = 1.5e-8
 T   = 1e+02
- 
+
 /**** SPACE-TIME ****/
 Nx      = 350
 Nz      = 250
@@ -24,7 +24,7 @@ Nt      = 100
 xmin    = -750.000000e3
 zmin    = -1000.000000e3
 xmax    =  750.000000e3
-zmax    = 10.000000e3 
+zmax    = 10.000000e3
 dt      = 1.2623e+10
 dt_constant = 0
 dt_max  = 3.1558e+12
@@ -62,7 +62,7 @@ cpc             = 1
 
 /**** SETUP DEPENDANT ****/
 EpsBG           = 1e-20 /Background strain rate
-user0           = 149e3 /LAB depth 
+user0           = 149e3 /LAB depth
 user1           = 15e3 / LC thickness
 user2           = -15e3 /diff crustal thickness
 user3           = 1350 / mantle T
