@@ -95,3 +95,4 @@ venv
 *.png
 *.dat
 *.h5
+*.ini
