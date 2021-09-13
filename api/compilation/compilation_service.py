@@ -1,6 +1,6 @@
 import subprocess
 from .compilation_dto import CompilingDto
-from api.utils.cache.cache_service import save_compilation
+from api.cache.cache_service import save_compilation
 
 
 def compile_mdoodz(compiling_dto: CompilingDto):

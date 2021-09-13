@@ -3,6 +3,7 @@ from flask_cors import CORS
 from api.compilation import compilation_controller
 from api.visualisation import visualisation_controller
 from api.simulation import simulation_controller
+from api.cache import cache_controller
 from api.exceptions import UserException
 from marshmallow.exceptions import ValidationError
 
@@ -17,10 +18,12 @@ cors.init_app(compilation_controller.blueprint, origins=origins, resources=resou
 cors.init_app(compilation_controller.cleaner_blueprint, origins=origins, resources=resources)
 cors.init_app(visualisation_controller.blueprint, origins=origins, resources=resources)
 cors.init_app(simulation_controller.blueprint, origins=origins, resources=resources)
+cors.init_app(cache_controller.blueprint, origins=origins, resources=resources)
 app.register_blueprint(compilation_controller.blueprint)
 app.register_blueprint(compilation_controller.cleaner_blueprint)
 app.register_blueprint(visualisation_controller.blueprint)
 app.register_blueprint(simulation_controller.blueprint)
+app.register_blueprint(cache_controller.blueprint)
 
 
 @app.errorhandler(UserException)

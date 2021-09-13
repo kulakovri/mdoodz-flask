@@ -5,6 +5,11 @@ cache_file_name = 'cache.ini'
 config = ConfigParser()
 
 
+def get_cache():
+  config.read(cache_file_name)
+  return {s: dict(config.items(s)) for s in config.sections()}
+
+
 def save_compilation(compiling_dto: CompilingDto):
   config.read(cache_file_name)
   section_name = 'compiling'
