@@ -1,6 +1,6 @@
 import subprocess
 from .compilation_dto import CompilingDto
-from api.cache.cache_service import save_compilation
+from api.utils.cache.compilation import save_compilation, get_cache
 
 
 def compile_mdoodz(compiling_dto: CompilingDto):
@@ -15,3 +15,7 @@ def compile_mdoodz(compiling_dto: CompilingDto):
 def clean_compiled():
   stream = subprocess.Popen(['make', 'clean'], cwd='mdoodz_source')
   print(stream.stdout)
+
+
+def get_compiling_cached():
+  return get_cache()
