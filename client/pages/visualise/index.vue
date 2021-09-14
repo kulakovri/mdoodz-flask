@@ -1,18 +1,16 @@
 <template>
-  <v-row>
-    <v-col cols="12" md="8">
-      <v-card class="mb-4">
-        <v-btn @click="visualise">Visualise</v-btn>
-        <v-divider></v-divider>
-        <div
-          v-show="image"
-          class="lightbox__image"
-          :style="{ backgroundImage: image }"
-        ></div>
-      </v-card>
-
-    </v-col>
-  </v-row>
+  <div>
+    <v-row>
+      <v-col cols="12" md="8">
+        <v-card class="mb-4">
+          <v-btn @click="visualise">Visualise</v-btn>
+          <v-divider></v-divider>
+        </v-card>
+        <v-img :src="image"></v-img>
+        <v-slider v-model="pickedImageNumber" :max="imagesCount"></v-slider>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -27,7 +25,9 @@ export default {
   components: {PickListField},
   data() {
     return {
-      image: null,
+      pickedImageNumber: 0,
+      imagesCount: 0,
+      image: '',
     };
   },
   computed: {
@@ -35,13 +35,36 @@ export default {
       return Object.values(SimulationName);
     }
   },
+  async beforeMount() {
+    await this.getImageCount();
+    await this.getImage();
+  },
   methods: {
     async visualise() {
       try {
-        await axios.get('api/visualise');
+        await axios.post('api/visualise');
       } catch (ex) {
         userStore.setError(ex);
       }
+    },
+    async getImageCount() {
+      try {
+        this.imagesCount = await axios.get('api/images') - 1;
+      } catch (ex) {
+        userStore.setError(ex);
+      }
+    },
+    async getImage() {
+      try {
+        this.image = `http://localhost:4000/api/images?number=${this.pickedImageNumber}`; // TODO remove hardcoded port
+      } catch (ex) {
+        userStore.setError(ex);
+      }
+    }
+  },
+  watch: {
+    pickedImageNumber() {
+      this.getImage();
     },
   },
 };
