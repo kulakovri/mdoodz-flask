@@ -42,6 +42,10 @@ export default {
       return Object.values(SimulationName);
     }
   },
+  async beforeMount() {
+    await simulationStore.getCompilingCache();
+    this.pickedSimulationName = simulationStore.compiling?.simulation_name || this.pickedSimulationName;
+  },
   methods: {
     async runSimulation() {
       try {

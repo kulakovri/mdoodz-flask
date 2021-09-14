@@ -61,3 +61,7 @@ export const postFile = async (url, data: FormData) => {
     }),
   );
 };
+
+export const getFile = async (url) => {
+  console.log($axios.getUri())
+}
