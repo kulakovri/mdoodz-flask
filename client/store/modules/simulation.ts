@@ -31,9 +31,9 @@ export default class Simulation extends VuexModule {
   }
 
   @Action
-  async getCache() {
+  async getCompilingCache() {
     try {
-      const {compiling} = await axios.get('api/cache');
+      const {compiling} = await axios.get('api/compiling-cache');
       this.context.commit('_setCompiling', compiling)
     } catch (e) {
       userStore.setError(e)

@@ -58,7 +58,7 @@ export default {
     },
   },
   async beforeMount() {
-    await simulationStore.getCache();
+    await simulationStore.getCompilingCache();
     this.pickedSimulationName = simulationStore.compiling?.simulation_name || this.pickedSimulationName;
     this.opt = simulationStore.compiling?.opt || this.opt;
     this.mkl = simulationStore.compiling?.mkl || this.mkl;
