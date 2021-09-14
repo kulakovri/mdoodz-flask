@@ -19,6 +19,7 @@ def clean():
   clean_compiled()
   return ''
 
+
 @blueprint_cache.get('/api/compiling-cache')
 def get_compiling_cached():
-  return get_cache();
+  return get_cache()
