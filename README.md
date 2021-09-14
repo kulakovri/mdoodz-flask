@@ -40,5 +40,14 @@ Please note that aligning variable declarations with the whitespaces considered 
 - For С and Python variables use `snake_case`, for JavaScript `camelCase`
 - For DTO (Data Transfer Objects) `snake_case` is used always
 
+### Server
 
+Is used as a layer between the MDOODZ6.0 source code and the front-end. 
+Also it is used for working with MDOODZ6.0 output files (visualising) and potentially to extend MDOODZ6.0 functionality. 
+
+Server connects with frontend using REST API provided by the lightweight flask framework.
+For each feature there is a package where API endpoints are set in `_controller.py` files, 
+business logic encapsulated in a `_service.py`, and the structure of the transferred data is set in `_dto.py`.
+
+Internal auxiliary tools are stored in `/utils` package.
 

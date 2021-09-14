@@ -3,6 +3,7 @@ from configparser import ConfigParser
 
 cache_file_name = 'cache.ini'
 config = ConfigParser()
+section_name = 'compiling'
 
 
 def get_cache():
@@ -12,7 +13,6 @@ def get_cache():
 
 def save_compilation(compiling_dto: CompilingDto):
   config.read(cache_file_name)
-  section_name = 'compiling'
   create_section(section_name)
   config.set(section_name, 'simulation_name', compiling_dto.simulation_name)
   config.set(section_name, 'mkl', compiling_dto.mkl)
@@ -22,7 +22,6 @@ def save_compilation(compiling_dto: CompilingDto):
 
 def save_compilation_status(status: str):
   config.read(cache_file_name)
-  section_name = 'compiling'
   create_section(section_name)
   config.set(section_name, 'status', status)
   _update(config)
