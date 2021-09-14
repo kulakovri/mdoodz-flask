@@ -1,4 +1,6 @@
-import {Module, VuexModule} from "vuex-module-decorators";
+import {Action, Module, Mutation, VuexModule} from "vuex-module-decorators";
+import * as axios from '~/utils/axios';
+import {userStore} from '~/store';
 
 export enum SimulationName {
   Duretz14_SimpleShear = 'Duretz14_SimpleShear',
@@ -17,5 +19,24 @@ export enum SimulationName {
   namespaced: true,
 })
 export default class Simulation extends VuexModule {
-  private _currentSimulationName: SimulationName | null = null;
+  private _compiling: any | null = null;
+
+  get compiling() {
+    return this._compiling;
+  }
+
+  @Mutation
+  _setCompiling(value: string | null) {
+    this._compiling = value;
+  }
+
+  @Action
+  async getCache() {
+    try {
+      const {compiling} = await axios.get('api/cache');
+      this.context.commit('_setCompiling', compiling)
+    } catch (e) {
+      userStore.setError(e)
+    }
+  }
 }
