@@ -3,7 +3,7 @@ from .compilation_dto import CompilingDto
 from .compilation_service import compile_mdoodz, clean_compiled, get_cache
 
 blueprint = Blueprint('compiler', __name__)
-cleaner_blueprint = Blueprint('cleaner', __name__)
+blueprint_cleaner = Blueprint('cleaner', __name__)
 blueprint_cache = Blueprint('compiling_cache', __name__)
 
 
@@ -14,7 +14,7 @@ def compile():
   return ''
 
 
-@cleaner_blueprint.post('/api/clean')
+@blueprint_cleaner.post('/api/clean')
 def clean():
   clean_compiled()
   return ''

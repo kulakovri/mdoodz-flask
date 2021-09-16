@@ -14,14 +14,16 @@ origins = app.config.get('CORS_ORIGIN_WHITELIST', '*')
 resources = {r"*": {"origins": "*", "supports_credentials": True}}
 
 cors.init_app(compilation_controller.blueprint, origins=origins, resources=resources)
-cors.init_app(compilation_controller.cleaner_blueprint, origins=origins, resources=resources)
+cors.init_app(compilation_controller.blueprint_cleaner, origins=origins, resources=resources)
 cors.init_app(compilation_controller.blueprint_cache, origins=origins, resources=resources)
 cors.init_app(visualisation_controller.blueprint, origins=origins, resources=resources)
+cors.init_app(visualisation_controller.blueprint_images, origins=origins, resources=resources)
 cors.init_app(simulation_controller.blueprint, origins=origins, resources=resources)
 app.register_blueprint(compilation_controller.blueprint)
-app.register_blueprint(compilation_controller.cleaner_blueprint)
+app.register_blueprint(compilation_controller.blueprint_cleaner)
 app.register_blueprint(compilation_controller.blueprint_cache)
 app.register_blueprint(visualisation_controller.blueprint)
+app.register_blueprint(visualisation_controller.blueprint_images)
 app.register_blueprint(simulation_controller.blueprint)
 
 
