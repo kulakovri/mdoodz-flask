@@ -6,7 +6,11 @@
           <v-btn @click="visualise">Visualise</v-btn>
           <v-divider></v-divider>
         </v-card>
-        <v-img :src="image"></v-img>
+        <v-carousel hide-delimiters :show-arrows="false" v-model="pickedImageNumber">
+          <v-carousel-item
+            v-for="image in images" :key="image.i" :src="image.link" :transition="false" :reverse-transition="false"
+          ></v-carousel-item>
+        </v-carousel>
         <v-slider v-model="pickedImageNumber" :max="imagesCount"></v-slider>
       </v-col>
     </v-row>
@@ -27,7 +31,7 @@ export default {
     return {
       pickedImageNumber: 0,
       imagesCount: 0,
-      image: '',
+      images: [],
     };
   },
   computed: {
@@ -37,7 +41,7 @@ export default {
   },
   async beforeMount() {
     await this.getImageCount();
-    await this.getImage();
+    this.getImages();
   },
   methods: {
     async visualise() {
@@ -49,22 +53,23 @@ export default {
     },
     async getImageCount() {
       try {
-        this.imagesCount = await axios.get('api/images') - 1;
+        this.imagesCount = await axios.get('api/images');
       } catch (ex) {
         userStore.setError(ex);
       }
     },
-    async getImage() {
-      try {
-        this.image = `http://localhost:4000/api/images?number=${this.pickedImageNumber}`; // TODO remove hardcoded port
-      } catch (ex) {
-        userStore.setError(ex);
-      }
-    }
+    getImages() {
+      this.images = [...Array(this.imagesCount)].map((_, i) => {
+        return {
+          number: i,
+          link: `http://localhost:4000/api/images?number=${i}`,
+        }
+      })
+    },
   },
   watch: {
     pickedImageNumber() {
-      this.getImage();
+
     },
   },
 };
