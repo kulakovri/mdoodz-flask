@@ -1,5 +1,3 @@
-import io
-
 import h5py as h5py
 import numpy as np
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
